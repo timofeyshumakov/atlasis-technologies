@@ -1,0 +1,20 @@
+include mixins.pug
+aside(class="aside" id="aside")
+  .aside__container.container
+    nav.aside__aside-menu.aside-menu
+      -src = ['dashboard', 'transactions', 'accounts', 'investments', 'credit-cards', 'loans', 'services', 'previleges', 'settings']
+      -menuLinks = ['Dashboard', 'Transactions', 'Accounts', 'Investments', 'Credit Cards', 'Loans', 'Services', 'My Privileges', 'Setting']
+      -i = 0
+      ul.aside-menu__list
+        each link in menuLinks
+          li.aside-menu__item.aside-item
+            if(i === menuLinks.length - 1)
+              span(class='active-aside-item')
+              a(class='aside-item__link' href= `#`)
+                +img('aside-item__img', `aside/${src[i]}.svg`, src[i])
+                span(class='aside-item__txt')= link
+            else
+              a(class='aside-item__link' href= `#`)
+                +img('aside-item__img', `aside/${src[i]}.svg`, src[i])
+                span(class='aside-item__txt')= link
+            -i++

@@ -1,0 +1,43 @@
+include mixins.pug
+.wrapper
+  include header.pug
+
+  main.main
+    .main__container.container
+      include aside.pug
+      .info
+        .info__container.container
+          nav.info__menu.info-menu
+            -menuLinks = ['Edit Profile', 'Preferences', 'Security']
+            -i = 0
+            ul.info-menu__list
+              each link in menuLinks
+                li.info-menu__item.info-item
+                  if(i === 0)
+                    a(class='info-menu__link active-info-link' href= `#`)= link
+                  else
+                    a(class='info-menu__link' href= `#`)= link
+                  -i++
+          .info__dashboard
+            .info__profile.profile
+              +img('profile__img', `profile/profile.png`, 'profile')
+              button.profile__edit
+                +img('profile__edit-img', `info/edit.svg`, 'edit profile img')
+            form(class="info__form" action="#" method="post")
+              .info__fields
+                -labels = ['Your Name', 'User Name', 'Email', 'Password', 'Date of Birth', 'Present Address', 'Permanent Address', 'City', 'Postal Code', 'Country']
+                -placeholders = ['Charlene Reed', 'Charlene Reed ', 'charlenereed@gmail.com ', '********', '25 January 1990', 'San Jose, California, USA', 'San Jose, California, USA', 'San Jose', '45962', 'USA']
+                -for(i =  0; i < labels.length; i++){
+                  div(class="info__field")
+                    label(class="info__label")= labels[i]
+                    if(i === 3)
+                      input(class="info__input" type='password' placeholder=placeholders[i])
+                    else if(i === 4)
+                      select.info__select
+                        option(value='25 January 1990')= '25 January 1990'
+                        option(value='25 January 1991')= '25 January 1991'
+                    else
+                      input(class="info__input" type='text' placeholder=placeholders[i])
+                -}
+              input(class="info__save" type="submit" value="Save")
+

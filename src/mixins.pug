@@ -1,0 +1,5 @@
+mixin img(className,src,alt,tabIndex,loading)
+  if alt !== undefined
+    img(class=`${className}` src=`img/${src}` alt=`${alt}` title=`${alt}`)
+  else
+    img(class=`${className}` src=`img/${src}` alt=" ")

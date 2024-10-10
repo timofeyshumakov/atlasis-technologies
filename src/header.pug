@@ -1,0 +1,20 @@
+include mixins.pug
+header.header
+  .header__container.container
+    div(class="header__burger burger" id="burger")
+      span.burger__line
+      span.burger__line
+      span.burger__line
+    .header__logo.logo
+      +img(`logo__img`, 'header/logo.svg', 'logo')
+      .logo__txt BankDash.
+    h1.header__title Setting
+    form(class="header__search search" action="/search" method="get")
+      button(class="search__button" type="submit" aria-label="search")
+        +img(`search__img`, 'header/search.svg', 'logo')
+      input(class="search__input" type="text" name="search" placeholder="Search for something")
+    button(class="header__button")
+      +img(`logo__img`, 'header/settings.svg', 'logo')
+    button(class="header__button")
+      +img(`logo__img`, 'header/alert.svg', 'logo')
+    +img(`header__profile`, 'profile/profile.png', 'profile')
